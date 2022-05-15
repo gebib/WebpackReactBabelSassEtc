@@ -6,13 +6,13 @@ module.exports = {
     entry: './src/index.js',
 
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.join(__dirname, '../../dist'),
         filename: 'bundle.js'
     },
 
     plugins: [
         new HTMLWebpackPlugin({
-            template: './src/index.html'
+            template: './src/template.html', //as if it runs from the root!
         })
     ],
 
@@ -27,6 +27,11 @@ module.exports = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
+            },
+
+            {
+                test: /\.(css|scss|sass)$/,
+                use: ["style-loader", "css-loader", "sass-loader"] //order does matter!
             }
         ]
     }
